@@ -1,0 +1,6 @@
+{
+  "name": "Jesus is God",
+  "description": "An inspiring biblical book examining proofs of the divinity of Christ through Old Testament prophetic visions, Jesus's own declarations, and deep side-by-side comparisons of what John and the prophets saw.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
