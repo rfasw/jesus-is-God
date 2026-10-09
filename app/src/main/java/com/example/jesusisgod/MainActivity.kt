@@ -1,6 +1,7 @@
 package com.example.jesusisgod
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 
@@ -17,15 +18,16 @@ class MainActivity : AppCompatActivity() {
         val pages = BookContent.getPages()
         val adapter = BookPagerAdapter(this, pages.size)
         viewPager.adapter = adapter
-    }
 
-    @Deprecated("Deprecated in Java")
-    override fun onBackPressed() {
-        if (viewPager.currentItem == 0) {
-            @Suppress("DEPRECATION")
-            super.onBackPressed()
-        } else {
-            viewPager.currentItem = viewPager.currentItem - 1
-        }
+        onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (viewPager.currentItem > 0) {
+                    viewPager.currentItem = viewPager.currentItem - 1
+                } else {
+                    isEnabled = false
+                    onBackPressedDispatcher.onBackPressed()
+                }
+            }
+        })
     }
 }
